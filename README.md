@@ -185,6 +185,52 @@ dbt docs serve
 docker compose down
 ```
 
+## Folder structure
+By default dbt will look for warehouse connections in the file ~/.dbt/profiles.yml. The DBT_PROFILES_DIR environment variable tells dbt to look for the profiles.yml file in the current working directory.
+
+You can also create a dbt project using dbt init. This will provide you with a sample project, which you can modify.
+
+In the simple_dbt_project folder you will see the following folders.
+
+├── README.md
+├── analysis
+├── data
+├── dbt_project.yml
+├── docker-compose.yml
+├── macros
+├── models
+│   ├── marts
+│   │   ├── core
+│   │   │   ├── core.yml
+│   │   │   ├── dim_customers.sql
+│   │   │   └── fct_orders.sql
+│   │   └── marketing
+│   │       ├── customer_orders.sql
+│   │       └── marketing.yml
+│   └── staging
+│       ├── src_eltool.yml
+│       ├── stg_eltool.yml
+│       ├── stg_eltool__customers.sql
+│       ├── stg_eltool__orders.sql
+│       └── stg_eltool__state.sql
+├── profiles.yml
+├── raw_data
+│   ├── customer.csv
+│   ├── customer_new.csv
+│   ├── orders.csv
+│   └── state.csv
+├── snapshots
+│   └── customers.sql
+├── tests
+│   └── assert_customer_dimension_has_no_row_loss.sql
+└── warehouse_setup
+    └── init.sql
+
+`analysis`: Any .sql files found in this folder will be compiled to raw sql when you run dbt compile. They will not be run by dbt but can be copied into any tool of choice.
+
+`data`: We can store raw data that we want to be loaded into our data warehouse. This is typically used to store small mapping data.
+
+`macros`: Dbt allows users to create macros, which are sql based functions. These macros can be reused across our project.
 ## Main repository (Thanks to [josephmachado](https://github.com/josephmachado))
 
 Original repository is [simple_dbt_project](https://github.com/josephmachado/simple_dbt_project)
