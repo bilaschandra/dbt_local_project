@@ -191,7 +191,7 @@ By default dbt will look for warehouse connections in the file ~/.dbt/profiles.y
 You can also create a dbt project using dbt init. This will provide you with a sample project, which you can modify.
 
 In the simple_dbt_project folder you will see the following folders.
-
+```bash
 ├── README.md
 ├── analysis
 ├── data
@@ -225,6 +225,7 @@ In the simple_dbt_project folder you will see the following folders.
 │   └── assert_customer_dimension_has_no_row_loss.sql
 └── warehouse_setup
     └── init.sql
+```
 
 `analysis`: Any .sql files found in this folder will be compiled to raw sql when you run dbt compile. They will not be run by dbt but can be copied into any tool of choice.
 
