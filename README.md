@@ -13,7 +13,7 @@ Clone the git repo and start the data warehouse docker container
 ```bash
 git clone https://github.com/bilaschandra/dbt_local_project.git
 cd dbt_local_project
-docker compose up -d
+docker-compose up -d
 ```
 
 ## Run dbt (Command and output)
